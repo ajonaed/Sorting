@@ -1,0 +1,74 @@
+import java.util.Arrays;
+
+public class MergeSort {
+
+	public static void main(String[] args) {
+		int [] a = {7,8,3,1,4,5};
+		
+		mergeSort(a,0,5);
+		//System.out.println(a.length);
+		System.out.println(Arrays.toString(a));
+	}
+
+	private static void mergeSort(int[] is,int first, int last) {
+		
+		if ( last <= first) return;
+		
+			int q = (first+last)/2;
+			mergeSort(is,first,q);
+			mergeSort(is,q+1,last);
+			merge(is,first,q,last);
+
+	}
+
+	private static void merge(int[] is, int first, int q, int last) {
+		//int i,j,k;
+		int leftSize = q-first+1;
+		int rightSize = last -q;
+		
+		int [] L = new int[leftSize];
+		int [] R = new int[rightSize];
+		for ( int i=0; i<leftSize; i++) {
+			L[i] = is[first+i];
+			System.out.println(L[i]);
+		}
+		for ( int j=0; j<rightSize; j++ ) {
+			R[j] = is[q+1+j];
+			System.out.println(R[j]);
+		}
+		
+		int i=0, j =0;
+		int k = first; 
+        while (i < leftSize && j < rightSize) 
+        { 
+            if (L[i] <= R[j]) 
+            { 
+                is[k] = L[i]; 
+                i++; 
+            } 
+            else
+            { 
+                is[k] = R[j]; 
+                j++; 
+            } 
+            k++; 
+        } 
+  
+        /* Copy remaining elements of L[] if any */
+        while (i < leftSize) 
+        { 
+            is[k] = L[i]; 
+            i++; 
+            k++; 
+        } 
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < rightSize) 
+        { 
+            is[k] = R[j]; 
+            j++; 
+            k++; 
+        } 
+	}
+
+}
