@@ -22,7 +22,6 @@ public class MergeSort {
 	}
 
 	private static void merge(int[] is, int first, int q, int last) {
-		//int i,j,k;
 		int leftSize = q-first+1;
 		int rightSize = last -q;
 		
